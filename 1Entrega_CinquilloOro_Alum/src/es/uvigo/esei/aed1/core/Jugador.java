@@ -7,7 +7,42 @@
 package es.uvigo.esei.aed1.core;
 
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Jugador {
 
+    private String nombre;
+    private List<Carta> mano;
+    public Jugador(String nombre) {
+        this.nombre = nombre;
+        mano = new ArrayList<>();
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    public void recibeCarta(Carta carta) {
+        mano.add(carta);
+    }
+
+    public List<Carta> getMano() {
+        return mano;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+
+        if (obj instanceof Jugador other) {
+            result = other.getNombre().equals(nombre) && other.getMano().equals(mano);
+        }
+
+        return result;
+    }
 }

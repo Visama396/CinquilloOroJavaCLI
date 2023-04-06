@@ -7,9 +7,35 @@
 package es.uvigo.esei.aed1.core;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Baraja {
 
-    
-    
-   
+    private List<Carta> cartas = new ArrayList<Carta>();
+
+    public Baraja(boolean barajar) {
+        crearBaraja();
+
+        if (barajar) {
+            barajar();
+        }
+    }
+
+    private void crearBaraja() {
+        for (int i = 0; i < Carta.Palo.values().length; i++) {
+            for (int j = 0; j < Carta.Valor.values().length; j++) {
+                cartas.add(new Carta(Carta.Valor.values()[j], Carta.Palo.values()[i]));
+            }
+        }
+    }
+
+    public List<Carta> getCartas() {
+        return cartas;
+    }
+
+    public void barajar() {
+        Collections.shuffle(cartas);
+    }
 }
