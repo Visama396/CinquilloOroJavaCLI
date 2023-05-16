@@ -5,6 +5,7 @@
 
 package es.uvigo.esei.aed1.iu;
 
+import es.uvigo.esei.aed1.core.Carta;
 import es.uvigo.esei.aed1.core.Jugador;
 
 import java.util.*;
@@ -71,7 +72,17 @@ public class IU {
         return jugadores;
     }
 
+    public void mostrarMano(Jugador jugador) {
+        StringBuilder sb = new StringBuilder();
 
+        sb.append("{");
+        for (Carta c : jugador.getMano()) {
+            sb.append(c).append(", ");
+        }
+        sb.delete(sb.lastIndexOf(","), sb.length());
+        sb.append("}");
+        System.out.print(sb);
+    }
 
     public void mostrarJugador(Jugador jugador) {
 
